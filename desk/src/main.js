@@ -15,6 +15,7 @@ import {
 } from "frappe-ui";
 import { createPinia } from "pinia";
 import { createApp, h } from "vue";
+
 import App from "./App.vue";
 import { createDialog } from "./components/dialogs";
 import "./index.css";
