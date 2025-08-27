@@ -99,18 +99,18 @@ const slaData = computed(() => {
   const firstResponse = firstResponseData();
   const resolution = resolutionData();
   return [
-    {
-      title: "First Response",
-      value: ticket.data.first_responded_on || ticket.data.response_by,
-      label: firstResponse.label,
-      theme: firstResponse.color,
-    },
-    {
-      title: "Resolution",
-      value: ticket.data.resolution_date || ticket.data.resolution_by,
-      label: resolution.label,
-      theme: resolution.color,
-    },
+    // {
+    //   title: "First Response",
+    //   value: ticket.data.first_responded_on || ticket.data.response_by,
+    //   label: firstResponse.label,
+    //   theme: firstResponse.color,
+    // },
+    // {
+    //   title: "Resolution",
+    //   value: ticket.data.resolution_date || ticket.data.resolution_by,
+    //   label: resolution.label,
+    //   theme: resolution.color,
+    // },
   ];
 });
 
@@ -187,11 +187,11 @@ const ticketBasicInfo = computed(() => [
     label: "Ticket ID",
     value: ticket.data.name,
   },
-  {
-    label: "Status",
-    value: transformStatus(ticket.data.status),
-    bold: true,
-  },
+  // {
+  //   label: "Status",
+  //   value: transformStatus(ticket.data.status),
+  //   bold: true,
+  // },
 ]);
 
 const ticketAdditionalInfo = computed(() => {
@@ -204,10 +204,10 @@ const ticketAdditionalInfo = computed(() => {
       label: "Team",
       value: ticket.data.agent_group || "-",
     },
-    {
-      label: "Priority",
-      value: ticket.data.priority,
-    },
+    // {
+    //   label: "Priority",
+    //   value: ticket.data.priority,
+    // },
   ];
   const custom_fields = ticket.data.template.fields
     .filter(

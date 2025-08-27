@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="flex flex-col gap-3 border-b px-6 py-3">
     <div
       v-for="s in sections"
@@ -22,7 +22,7 @@
       </div>
     </div>
   </div>
-</template>
+</template> -->
 
 <script setup lang="ts">
 import { dayjs } from "@/dayjs";
@@ -144,7 +144,7 @@ function getCalculatedResolution() {
     "s"
   );
   // let now = new Date()
-  resolution = dayjs(resolution).diff(dayjs(), "s");
+  // resolution = dayjs(resolution).diff(dayjs(), "s");
   return formatTime(resolution);
 }
 
