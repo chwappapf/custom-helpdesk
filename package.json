@@ -5,5 +5,8 @@
 		"postinstall": "cd desk && yarn install",
 		"dev": "cd desk && yarn dev",
 		"build": "cd desk && yarn build"
+	},
+	"dependencies": {
+		"vite": "^4.4.9"
 	}
 }
