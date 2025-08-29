@@ -26,8 +26,7 @@ export default {
     },
   },
   plugins: [
-    require("@tailwindcss/typography"),
-    function ({ addUtilities }) {
+    ({ addUtilities }) => {
       addUtilities({
         ".hide-scrollbar": {
           "scrollbar-width": "none",
