@@ -12,6 +12,7 @@
   "subject",
   "raised_by",
   "status",
+  "ticket_status",
   "priority",
   "cb00",
   "ticket_type",
@@ -104,6 +105,18 @@
    "oldfieldtype": "Select",
    "options": "Open\nReplied\nResolved\nClosed",
    "search_index": 1
+  },
+  {
+   "default": "Ticket Initiated",
+   "fieldname": "ticket_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Ticket Status",
+   "no_copy": 1,
+   "oldfieldname": "ticket_status",
+   "oldfieldtype": "Select",
+   "options": "Ticket Initiated\nQueries Raised which are pending with requester\nWork In Progress by Legal\nUnder Nivedita's Review\nDraft Shared\nResponse Received from Requester\nOn Hold\nResolved\nClosed",
+   "search_index": 1  
   },
   {
    "fieldname": "priority",
@@ -276,6 +289,7 @@
    "read_only": 1
   },
   {
+   "default": "Now",
    "fieldname": "opening_time",
    "fieldtype": "Time",
    "label": "Opening Time",

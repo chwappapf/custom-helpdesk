@@ -10,9 +10,21 @@
           :current-view="currentView"
         />
       </template>
-      <template #right-header>
+      <!-- <template #right-header>
         <RouterLink
           :to="{ name: isCustomerPortal ? 'TicketNew' : 'TicketAgentNew' }"
+        >
+          <Button label="Create" theme="gray" variant="solid">
+            <template #prefix>
+              <LucidePlus class="h-4 w-4" />
+            </template>
+          </Button>
+        </RouterLink>
+      </template> -->
+      <template #right-header>
+        <RouterLink
+          v-if="isCustomerPortal"
+          :to="{ name: 'TicketNew' }"
         >
           <Button label="Create" theme="gray" variant="solid">
             <template #prefix>

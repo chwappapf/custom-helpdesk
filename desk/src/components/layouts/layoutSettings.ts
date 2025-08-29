@@ -10,26 +10,26 @@ export const agentPortalSidebarOptions = [
     icon: LucideTicket,
     to: "TicketsAgent",
   },
-  {
-    label: "Knowledge Base",
-    icon: LucideBookOpen,
-    to: "AgentKnowledgeBase",
-  },
-  {
-    label: "Canned responses",
-    icon: LucideCloudLightning,
-    to: "CannedResponses",
-  },
+  // {
+  //   label: "Knowledge Base",
+  //   icon: LucideBookOpen,
+  //   to: "AgentKnowledgeBase",
+  // },
+  // {
+  //   label: "Canned responses",
+  //   icon: LucideCloudLightning,
+  //   to: "CannedResponses",
+  // },
   {
     label: "Customers",
     icon: OrganizationsIcon,
     to: "CustomerList",
   },
-  {
-    label: "Contacts",
-    icon: LucideContact2,
-    to: "ContactList",
-  },
+  // {
+  //   label: "Contacts",
+  //   icon: LucideContact2,
+  //   to: "ContactList",
+  // },
 ];
 
 export const customerPortalSidebarOptions = [
@@ -38,9 +38,9 @@ export const customerPortalSidebarOptions = [
     icon: LucideTicket,
     to: "TicketsCustomer",
   },
-  {
-    label: "Knowledge Base",
-    icon: LucideBookOpen,
-    to: "CustomerKnowledgeBase",
-  },
+  // {
+  //   label: "Knowledge Base",
+  //   icon: LucideBookOpen,
+  //   to: "CustomerKnowledgeBase",
+  // },
 ];

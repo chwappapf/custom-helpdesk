@@ -32,7 +32,7 @@
         >
           Assign
         </button>
-        <Dropdown :options="dropdownOptions">
+        <!-- <Dropdown :options="dropdownOptions">
           <template #default="{ open }">
             <Button :label="ticket.data.status">
               <template #prefix>
@@ -48,7 +48,7 @@
               </template>
             </Button>
           </template>
-        </Dropdown>
+        </Dropdown> -->
       </template>
     </LayoutHeader>
     <div v-if="ticket.data" class="flex h-full overflow-hidden">

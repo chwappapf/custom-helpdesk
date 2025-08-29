@@ -69,7 +69,7 @@ class HDTicket(Document):
         self.validate_ticket_type()
 
     def before_save(self):
-        self.apply_sla()
+        # self.apply_sla()
         if not self.is_new():
             self.handle_ticket_activity_update()
 
@@ -848,24 +848,48 @@ class HDTicket(Document):
                 "key": "subject",
                 "width": "25rem",
             },
-            {
-                "label": "Status",
+             {
+                "label": "Ticket Status",
                 "type": "Select",
-                "key": "status",
-                "width": "8rem",
+                "key": "ticket_status",
+                "width": "11rem",
             },
             {
-                "label": "First response",
-                "type": "Datetime",
-                "key": "response_by",
-                "width": "8rem",
+                "label": "Last Updated Date",
+                "type": "Date",
+                "key": "custom_last_updated_date",
+                "width": "12rem",
             },
-            {
-                "label": "Resolution",
-                "type": "Datetime",
-                "key": "resolution_by",
-                "width": "8rem",
+             {
+                "label": "Last Updated Time",
+                "type": "Time",
+                "key": "custom_last_updated_time",
+                "width": "12rem",
             },
+             {
+                "label": "Urgent",
+                "type": "Check",
+                "key": "custom_is_urgent",
+                "width": "4rem",
+            },
+            # {
+            #     "label": "Status",
+            #     "type": "Select",
+            #     "key": "status",
+            #     "width": "8rem",
+            # },
+            # {
+            #     "label": "First response",
+            #     "type": "Datetime",
+            #     "key": "response_by",
+            #     "width": "8rem",
+            # },
+            # {
+            #     "label": "Resolution",
+            #     "type": "Datetime",
+            #     "key": "resolution_by",
+            #     "width": "8rem",
+            # },
             {
                 "label": "Assigned To",
                 "type": "MultipleAvatar",
@@ -879,20 +903,20 @@ class HDTicket(Document):
                 "options": "HD Customer",
                 "width": "8rem",
             },
-            {
-                "label": "Priority",
-                "type": "Link",
-                "options": "HD Ticket Priority",
-                "key": "priority",
-                "width": "10rem",
-            },
-            {
-                "label": "Type",
-                "type": "Link",
-                "options": "HD Ticket Type",
-                "key": "ticket_type",
-                "width": "11rem",
-            },
+            # {
+            #     "label": "Priority",
+            #     "type": "Link",
+            #     "options": "HD Ticket Priority",
+            #     "key": "priority",
+            #     "width": "10rem",
+            # },
+            # {
+            #     "label": "Type",
+            #     "type": "Link",
+            #     "options": "HD Ticket Type",
+            #     "key": "ticket_type",
+            #     "width": "11rem",
+            # },
             {
                 "label": "Team",
                 "type": "Link",
@@ -900,26 +924,26 @@ class HDTicket(Document):
                 "key": "agent_group",
                 "width": "10rem",
             },
-            {
-                "label": "Contact",
-                "type": "Link",
-                "key": "contact",
-                "options": "Contact",
-                "width": "8rem",
-            },
-            {
-                "label": "Rating",
-                "type": "Rating",
-                "key": "feedback_rating",
-                "width": "10rem",
-            },
-            {
-                "label": "Created",
-                "type": "Datetime",
-                "key": "creation",
-                "options": "Contact",
-                "width": "8rem",
-            },
+            # {
+            #     "label": "Contact",
+            #     "type": "Link",
+            #     "key": "contact",
+            #     "options": "Contact",
+            #     "width": "8rem",
+            # },
+            # {
+            #     "label": "Rating",
+            #     "type": "Rating",
+            #     "key": "feedback_rating",
+            #     "width": "10rem",
+            # },
+            # {
+            #     "label": "Created",
+            #     "type": "Datetime",
+            #     "key": "creation",
+            #     "options": "Contact",
+            #     "width": "8rem",
+            # },
         ]
         customer_portal_columns = [
             {
@@ -935,30 +959,54 @@ class HDTicket(Document):
                 "width": "22rem",
             },
             {
-                "label": "Status",
+                "label": "Ticket Status",
                 "type": "Select",
-                "key": "status",
+                "key": "ticket_status",
                 "width": "11rem",
             },
             {
-                "label": "Priority",
-                "type": "Link",
-                "options": "HD Ticket Priority",
-                "key": "priority",
-                "width": "10rem",
+                "label": "Last Updated Date",
+                "type": "Date",
+                "key": "custom_last_updated_date",
+                "width": "12rem",
+            },
+             {
+                "label": "Last Updated Time",
+                "type": "Time",
+                "key": "custom_last_updated_time",
+                "width": "12rem",
             },
             {
-                "label": "First response",
-                "type": "Datetime",
-                "key": "response_by",
-                "width": "8rem",
+                "label": "Urgent",
+                "type": "Check",
+                "key": "custom_is_urgent",
+                "width": "4rem",
             },
-            {
-                "label": "Resolution",
-                "type": "Datetime",
-                "key": "resolution_by",
-                "width": "8rem",
-            },
+            # {
+            #     "label": "Status",
+            #     "type": "Select",
+            #     "key": "status",
+            #     "width": "11rem",
+            # },
+            # {
+            #     "label": "Priority",
+            #     "type": "Link",
+            #     "options": "HD Ticket Priority",
+            #     "key": "priority",
+            #     "width": "10rem",
+            # },
+            # {
+            #     "label": "First response",
+            #     "type": "Datetime",
+            #     "key": "response_by",
+            #     "width": "8rem",
+            # },
+            # {
+            #     "label": "Resolution",
+            #     "type": "Datetime",
+            #     "key": "resolution_by",
+            #     "width": "8rem",
+            # },
             {
                 "label": "Team",
                 "type": "Link",
@@ -977,20 +1025,23 @@ class HDTicket(Document):
         rows = [
             "name",
             "subject",
-            "status",
-            "priority",
+            # "status",
+            # "priority",
             "ticket_type",
-            "agent_group",
-            "contact",
-            "agreement_status",
-            "response_by",
-            "resolution_by",
-            "customer",
-            "first_responded_on",
-            "modified",
-            "creation",
-            "_assign",
-            "resolution_date",
+            "custom_last_updated_time",
+            "custom_last_updated_date",
+            # "agent_group",
+            "custom_is_urgent",
+            # "contact",
+            # "agreement_status",
+            # "response_by",
+            # "resolution_by",
+            # "customer",
+            # "first_responded_on",
+            # "modified",
+            # "creation",
+            # "_assign",
+            # "resolution_date",
         ]
         return {
             "columns": customer_portal_columns
