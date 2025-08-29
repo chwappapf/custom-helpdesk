@@ -7,6 +7,6 @@
 		"build": "cd desk && yarn build"
 	},
 	"dependencies": {
-		"vite": "^4.4.9"
+		"vite-plugin-pwa": "^1.0.2"
 	}
 }
