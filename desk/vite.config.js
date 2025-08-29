@@ -1,9 +1,7 @@
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import frappeui from "frappe-ui/vite";
-import path from "path";
-import IconsResolver from "unplugin-icons/resolver";
-import Components from "unplugin-vue-components/vite";
+import path from "node:path";
 import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 
@@ -14,19 +12,13 @@ export default defineConfig({
       lucideIcons: true,
       jinjaBootData: true,
       buildConfig: {
-        outDir: `../helpdesk/public/desk`,
+        outDir: "../helpdesk/public/desk",
         emptyOutDir: true,
         indexHtmlPath: "../helpdesk/www/helpdesk/index.html",
       },
     }),
     vue(),
     vueJsx(),
-    Components({
-      resolvers: IconsResolver({
-        prefix: false,
-        enabledCollections: ["lucide"],
-      }),
-    }),
     VitePWA({
       registerType: "autoUpdate",
       devOptions: {
