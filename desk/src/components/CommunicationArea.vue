@@ -16,6 +16,7 @@
           </template>
         </Button>
         <Button
+          v-if="showComments"
           variant="ghost"
           label="Comment"
           :class="[showCommentBox ? '!bg-gray-300 hover:!bg-gray-200' : '']"
@@ -58,6 +59,7 @@
       />
     </div>
     <div
+      v-if="showComments"
       v-show="showCommentBox"
       @keydown.ctrl.enter.capture.stop="submitComment"
       @keydown.meta.enter.capture.stop="submitComment"
@@ -160,6 +162,10 @@ const props = defineProps({
   bccEmails: {
     type: Array,
     default: () => [],
+  },
+  showComments: {
+    type: Boolean,
+    default: true,
   },
 });
 
