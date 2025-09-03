@@ -893,7 +893,7 @@ class HDTicket(Document):
              {
                 "label": "Urgent",
                 "type": "Select",
-                "key": "custom_is_urgent",
+                "key": "is_urgent",
                 "width": "4rem",
             },
             # {
@@ -914,12 +914,12 @@ class HDTicket(Document):
             #     "key": "resolution_by",
             #     "width": "8rem",
             # },
-            {
-                "label": "Assigned To",
-                "type": "MultipleAvatar",
-                "key": "_assign",
-                "width": "8rem",
-            },
+            # {
+            #     "label": "Assigned To",
+            #     "type": "MultipleAvatar",
+            #     "key": "_assign",
+            #     "width": "8rem",
+            # },
             {
                 "label": "Customer",
                 "type": "Link",
@@ -1003,7 +1003,7 @@ class HDTicket(Document):
             {
                 "label": "Urgent",
                 "type": "Select",
-                "key": "custom_is_urgent",
+                "key": "is_urgent",
                 "width": "4rem",
             },
             {
@@ -1071,7 +1071,7 @@ class HDTicket(Document):
             # "priority",
             # "custom_last_updated_date",
             # "agent_group",
-            "custom_is_urgent",
+            "is_urgent",
             "custom_allocated_full_name",
             "custom_last_modified_by_customer",
             "custom_closing_date",

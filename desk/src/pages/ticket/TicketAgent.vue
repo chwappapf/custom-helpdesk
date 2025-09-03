@@ -180,7 +180,7 @@ const route = useRoute();
 const router = useRouter();
 const authStore = useAuthStore();
 const isHelpdeskAdmin = computed(() => {
-  return authStore.roles?.includes("HelpdeskAdmin");
+  return authStore.roles?.includes("Helpdesk Admin");
 });
 const ticketStatusStore = useTicketStatusStore();
 const { getUser } = useUserStore();

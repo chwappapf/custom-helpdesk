@@ -337,6 +337,7 @@ const agentPortalDropdown = computed(() => [
     onClick: () => (showSettingsModal.value = true),
     condition: () => authStore.isAdmin || authStore.isManager,
   },
+  
   {
     group: "Danger",
     hideLabel: true,

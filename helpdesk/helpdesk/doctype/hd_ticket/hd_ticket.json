@@ -70,7 +70,8 @@
   "custom_last_modified_by_agent",
   "custom_total_time_taken",
   "custom_closing_date",
-  "custom_allocated_full_name"
+  "custom_allocated_full_name",
+  "is_urgent"
 ],
  "fields": [
   {
@@ -291,6 +292,14 @@
    "no_copy": 1,
    "oldfieldname": "opening_date",
    "oldfieldtype": "Date",
+   "read_only": 1
+  },
+  {
+   "default": "No",
+   "fieldname": "is_urgent",
+   "fieldtype": "Select",
+   "label": "Urgent",
+   "options": "Yes\nNo",
    "read_only": 1
   },
   {

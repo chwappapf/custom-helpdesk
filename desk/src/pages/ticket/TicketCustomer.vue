@@ -29,12 +29,12 @@
         <TicketCustomerTemplateFields v-if="isMobileView" />
 
         <TicketConversation class="grow" />
-        <!-- <div
+        <div
           class="w-full p-5"
           @keydown.ctrl.enter.capture.stop="sendEmail"
           @keydown.meta.enter.capture.stop="sendEmail"
-        > -->
-          <!-- <TicketTextEditor
+        >
+          <TicketTextEditor
             v-if="showEditor"
             ref="editor"
             v-model:attachments="attachments"
@@ -55,7 +55,7 @@
                 @click="sendEmail"
               />
             </template>
-          </TicketTextEditor> -->
+          </TicketTextEditor>
 
         <CommunicationArea
         :showComments="false"
@@ -68,11 +68,11 @@
           @update="
             () => {
               ticket.reload();
-              // ticketAgentActivitiesRef.scrollToLatestActivity();
+              ticketAgentActivitiesRef.scrollToLatestActivity();
             }
           "
         />
-        <!-- </div> -->
+        </div>
       </section>
       <!-- Ticket Sidebar only for desktop view-->
       <TicketCustomerSidebar v-if="!isMobileView" @open="isExpanded = true" />
