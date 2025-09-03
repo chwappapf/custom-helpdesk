@@ -65,8 +65,13 @@
   "feedback_rating",
   "feedback",
   "feedback_extra",
-  "meta_tab"
- ],
+  "meta_tab",
+  "custom_last_modified_by_customer",
+  "custom_last_modified_by_agent",
+  "custom_total_time_taken",
+  "custom_closing_date",
+  "custom_allocated_full_name"
+],
  "fields": [
   {
    "fieldname": "subject_section",
@@ -369,6 +374,11 @@
    "label": "Content Type"
   },
   {
+   "fieldname": "custom_allocated_full_name",
+   "fieldtype": "Data",
+   "label": "Allocated Full Name"
+  },
+  {
    "fieldname": "customer_feedback_section",
    "fieldtype": "Section Break"
   },
@@ -448,6 +458,42 @@
    "label": "Key",
    "read_only": 1,
    "set_only_once": 1
+  },
+  {
+   "fieldname": "custom_closing_date",
+   "fieldtype": "Date",
+   "label": "Ticket Closing Date",
+   "no_copy": 1,
+   "oldfieldname": "custom_closing_date",
+   "oldfieldtype": "Date",
+   "read_only": 1
+  },
+{
+   "fieldname": "custom_last_modified_by_agent",
+   "fieldtype": "Date",
+   "label": "Last Modified Date by Agent",
+   "no_copy": 1,
+   "oldfieldname": "custom_last_modified_by_agent",
+   "oldfieldtype": "Date",
+   "read_only": 1
+  },
+{
+   "fieldname": "custom_last_modified_by_customer",
+   "fieldtype": "Date",
+   "label": "Last Modified Date by Customer",
+   "no_copy": 1,
+   "oldfieldname": "custom_last_modified_by_customer",
+   "oldfieldtype": "Date",
+   "read_only": 1
+  },
+{
+   "fieldname": "custom_total_time_taken",
+   "fieldtype": "Data",
+   "label": "Total time taken",
+   "no_copy": 1,
+   "oldfieldname": "custom_total_time_taken",
+   "oldfieldtype": "Data",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,

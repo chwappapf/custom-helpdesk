@@ -331,12 +331,12 @@ const agentPortalDropdown = computed(() => [
   //   onClick: () => confirmLoginToFrappeCloud(),
   //   condition: () => !isMobileView.value && window.is_fc_site,
   // },
-  // {
-  //   label: "Settings",
-  //   icon: "settings",
-  //   onClick: () => (showSettingsModal.value = true),
-  //   condition: () => authStore.isAdmin || authStore.isManager,
-  // },
+  {
+    label: "Settings",
+    icon: "settings",
+    onClick: () => (showSettingsModal.value = true),
+    condition: () => authStore.isAdmin || authStore.isManager,
+  },
   {
     group: "Danger",
     hideLabel: true,

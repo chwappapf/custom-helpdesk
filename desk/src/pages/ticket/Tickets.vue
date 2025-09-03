@@ -162,7 +162,7 @@ const options = {
     name: isCustomerPortal.value ? "TicketCustomer" : "TicketAgent",
     prop: "ticketId",
   },
-  hideColumnSetting: false,
+  // hideColumnSetting: false,
 };
 
 function handle_response_by_field(row: any, item: string) {

@@ -26,7 +26,7 @@
           </component>
         </div>
         <button
-          v-else
+          v-if="isHelpdeskAdmin"
           class="rounded bg-gray-100 px-2 py-1.5 text-base text-gray-800"
           @click="showAssignmentModal = true"
         >
@@ -164,6 +164,7 @@ import {
   EmailIcon,
   IndicatorIcon,
 } from "@/components/icons";
+import { ComputedRef } from "vue";
 import { TicketAgentActivities, TicketAgentSidebar } from "@/components/ticket";
 import { setupCustomizations } from "@/composables/formCustomisation";
 import { useView } from "@/composables/useView";
@@ -173,11 +174,14 @@ import { useTicketStatusStore } from "@/stores/ticketStatus";
 import { useUserStore } from "@/stores/user";
 import { TabObject, TicketTab, View } from "@/types";
 import { getIcon } from "@/utils";
-import { ComputedRef } from "vue";
 import { showAssignmentModal } from "./modalStates";
+import { useAuthStore } from "@/stores/auth";
 const route = useRoute();
 const router = useRouter();
-
+const authStore = useAuthStore();
+const isHelpdeskAdmin = computed(() => {
+  return authStore.roles?.includes("HelpdeskAdmin");
+});
 const ticketStatusStore = useTicketStatusStore();
 const { getUser } = useUserStore();
 const { $dialog } = globalStore();
