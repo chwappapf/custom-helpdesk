@@ -1196,7 +1196,16 @@ def permission_query(user):
         "HD Settings", "restrict_tickets_by_agent_group"
     )
     if not enable_restrictions:
-        return  # If not enabled, return all tickets
+        return  # If not enabled, return all tickets    
+    
+    # TODO ----------
+    # # Step 1: Get all the tickets which is assigned to the current user
+    # tickets = frappe.db.get_all("ToDo", filters={"owner": user, "reference_type": "HD Ticket"}, pluck="reference_name")
+
+    # # Step 2: 'OR name IN (tickets)
+    # if tickets:
+    #     tickets = ", ".join(f"'{ticket}'" for ticket in tickets)
+    #     query += f" OR (`tabHD Ticket`.name in ({tickets}))".format(tickets=tickets)
 
     show_tickets_without_team = frappe.db.get_single_value(
         "HD Settings", "do_not_restrict_tickets_without_an_agent_group"
