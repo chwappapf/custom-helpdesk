@@ -23,6 +23,7 @@ export const useAuthStore = defineStore("auth", () => {
   const reloadUser = userInfo.reload;
 
   const user__ = computed(() => userInfo.data || {});
+  const roles = computed(() => userInfo.data?.roles || []);
   const hasDeskAccess: ComputedRef<boolean> = computed(
     () => user__.value.has_desk_access
   );
@@ -89,5 +90,6 @@ export const useAuthStore = defineStore("auth", () => {
     timezone,
     user,
     logout,
+    roles
   };
 });

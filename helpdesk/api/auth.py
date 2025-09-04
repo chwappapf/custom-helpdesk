@@ -23,14 +23,17 @@ def get_user():
     )
 
     is_agent = _is_agent()
-    is_admin = ("System Manager" or "Admistrator") in frappe.get_roles(current_user)
+    
+    roles = frappe.get_roles(current_user) # CHANGED THIS
+    
+    is_admin = ("System Manager" or "Admistrator") in roles
     has_desk_access = is_agent or is_admin
     user_image = user.user_image
     user_first_name = user.first_name
     user_name = user.full_name
     user_id = user.name
     username = user.username
-    is_manager = ("Agent Manager") in frappe.get_roles(current_user)
+    is_manager = ("Agent Manager") in roles
 
     return {
         "has_desk_access": has_desk_access,
@@ -43,6 +46,7 @@ def get_user():
         "user_name": user_name,
         "username": username,
         "time_zone": user.time_zone,
+        "roles": roles,
     }
 
 
