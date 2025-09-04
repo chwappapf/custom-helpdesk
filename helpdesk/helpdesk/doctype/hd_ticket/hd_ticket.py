@@ -848,11 +848,35 @@ class HDTicket(Document):
                 "key": "subject",
                 "width": "25rem",
             },
+               {
+                "label": "Work Centre",
+                "type": "Select",
+                "key": "custom_work_centre",
+                "width": "21rem",
+            },
+             {
+                "label": "Nature of Work",
+                "type": "Select",
+                "key": "custom_nature_of_work",
+                "width": "21rem",
+            },
              {
                 "label": "Ticket Status",
                 "type": "Select",
                 "key": "ticket_status",
-                "width": "18rem",
+                "width": "22rem",
+            },
+              {
+                "label": "Urgent",
+                "type": "Select",
+                "key": "is_urgent",
+                "width": "4rem",
+            },
+              {
+                "label": "Opening Date",
+                "type": "Date",
+                "key": "opening_date",
+                "width": "15rem",
             },
             {
                 "label": "Last Modified Date by Agent",
@@ -860,6 +884,7 @@ class HDTicket(Document):
                 "key": "custom_last_modified_by_agent",
                 "width": "15rem",
             },
+            
             {
                 "label": "Last Modified Date by Customer",
                 "type": "Date",
@@ -890,12 +915,7 @@ class HDTicket(Document):
             #     "key": "custom_last_updated_time",
             #     "width": "12rem",
             # },
-             {
-                "label": "Urgent",
-                "type": "Select",
-                "key": "is_urgent",
-                "width": "4rem",
-            },
+           
             # {
             #     "label": "Status",
             #     "type": "Select",
@@ -982,12 +1002,25 @@ class HDTicket(Document):
                 "key": "subject",
                 "width": "22rem",
             },
+             {
+                "label": "Work Centre",
+                "type": "Select",
+                "key": "custom_work_centre",
+                "width": "21rem",
+            },
+             {
+                "label": "Nature of Work",
+                "type": "Select",
+                "key": "custom_nature_of_work",
+                "width": "21rem",
+            },
             {
                 "label": "Ticket Status",
                 "type": "Select",
                 "key": "ticket_status",
-                "width": "11rem",
+                "width": "21rem",
             },
+            
             # {
             #     "label": "Last Updated Date",
             #     "type": "Date",
@@ -1005,6 +1038,12 @@ class HDTicket(Document):
                 "type": "Select",
                 "key": "is_urgent",
                 "width": "4rem",
+            },
+              {
+                "label": "Opening Date",
+                "type": "Date",
+                "key": "opening_date",
+                "width": "15rem",
             },
             {
                 "label": "Last Modified Date by Customer",
@@ -1056,13 +1095,13 @@ class HDTicket(Document):
                 "key": "agent_group",
                 "width": "10rem",
             },
-            {
-                "label": "Created",
-                "type": "Datetime",
-                "key": "creation",
-                "options": "Contact",
-                "width": "8rem",
-            },
+            # {
+            #     "label": "Created",
+            #     "type": "Datetime",
+            #     "key": "creation",
+            #     "options": "Contact",
+            #     "width": "8rem",
+            # },
         ]
         rows = [
             "name",
@@ -1072,10 +1111,11 @@ class HDTicket(Document):
             # "custom_last_updated_date",
             # "agent_group",
             "is_urgent",
+            "opening_date",
             "custom_allocated_full_name",
             "custom_last_modified_by_customer",
             "custom_closing_date",
-            "ticket_type",
+            # "ticket_type",
             # "contact",
             # "agreement_status",
             # "response_by",
