@@ -35,6 +35,17 @@
         />
       </div>
       <!-- existing fields -->
+
+      <!-- CC Field -->
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700">CC</label>
+        <FormControl
+          v-model="custom_cc"
+          type="text"
+          placeholder="Enter CC emails, comma separated"
+        />
+      </div>
+
       <div
         class="flex flex-col"
         :class="(subject.length >= 2 || description.length) && 'gap-5'"
@@ -155,6 +166,7 @@ const { $dialog } = globalStore();
 const { updateOnboardingStep } = useOnboarding("helpdesk");
 const { isManager, userId: userID } = useAuthStore();
 
+const custom_cc = ref("");
 const subject = ref("");
 const description = ref("");
 const attachments = ref([]);
@@ -225,6 +237,7 @@ const ticket = createResource({
     doc: {
       description: description.value,
       subject: subject.value,
+      custom_cc: custom_cc.value,
       template: props.templateId,
       ...templateFields,
     },

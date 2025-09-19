@@ -61,7 +61,7 @@
         :showComments="false"
           ref="communicationAreaRef"
           v-model="ticket.data"
-          :to-emails="[ticket.data?.raised_by]"
+          :to-emails="[agentEmail]"
           :cc-emails="[]"
           :bcc-emails="[]"
           :key="ticket.data?.name"
@@ -136,6 +136,14 @@ const attachments = ref([]);
 const showFeedbackDialog = ref(false);
 const isExpanded = ref(false);
 
+const agentEmail = computed(() => {
+  try {
+    const assigns = JSON.parse(ticket.data?._assign || "[]");
+    return assigns.length ? assigns[0] : null;
+  } catch {
+    return null;
+  }
+});
 const { isMobileView } = useScreenSize();
 const { $dialog } = globalStore();
 

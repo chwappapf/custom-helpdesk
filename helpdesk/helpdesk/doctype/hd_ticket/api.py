@@ -11,6 +11,7 @@ from helpdesk.helpdesk.doctype.hd_ticket_template.api import get_fields_meta
 from helpdesk.helpdesk.doctype.hd_ticket_template.api import get_one as get_template
 from helpdesk.utils import agent_only, check_permissions, get_customer, is_agent
 
+from frappe.utils import get_url_to_form
 
 @frappe.whitelist()
 # flake8: noqa
@@ -19,8 +20,36 @@ def new(doc, attachments=[]):
     doc["via_customer_portal"] = bool(frappe.session.user)
     doc["attachments"] = attachments
     d = frappe.get_doc(doc).insert()
+    # Send to CC if provided
+    cc_email = doc.get('custom_cc')
+    if cc_email:
+        send_cc_email(d, cc_email)
     return d
 
+def send_cc_email(ticket, cc_email):
+    from frappe.core.doctype.communication.email import make
+
+    # Generate ticket link
+    ticket_link = get_url_to_form("HD Ticket", ticket.name)
+
+    # Prepare email content
+    message = f"""
+        <p>A new ticket has been created with subject: <strong>{ticket.subject}</strong>.</p>
+        <p>You can view the ticket here: <a href="{ticket_link}">{ticket_link}</a></p>
+    """
+
+    # Support multiple email addresses
+    recipients = [e.strip() for e in cc_email.split(",") if e.strip()]
+    make(
+        subject=f"New Ticket Created: {ticket.name}",
+        content=message,
+        recipients=recipients,
+        sender=None,  # Will default to current user or system sender
+        send_email=True,
+        communication_medium="Email",
+        reference_doctype="HD Ticket",
+        reference_name=ticket.name,
+)
 
 @frappe.whitelist()
 def get_one(name, is_customer_portal=False):

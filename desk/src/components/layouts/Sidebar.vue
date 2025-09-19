@@ -38,7 +38,7 @@
         theme="gray"
         variant="solid"
       />
-      <SidebarLink
+      <!-- <SidebarLink
         class="relative my-0.5"
         label="Notifications"
         :icon="LucideBell"
@@ -55,7 +55,7 @@
             variant="subtle"
           />
         </template>
-      </SidebarLink>
+      </SidebarLink> -->
     </div>
     <div class="overflow-y-auto overflow-x-hidden">
       <div v-for="view in allViews" :key="view.label">

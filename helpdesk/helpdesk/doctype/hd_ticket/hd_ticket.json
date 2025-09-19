@@ -71,6 +71,8 @@
   "custom_total_time_taken",
   "custom_closing_date",
   "custom_allocated_full_name",
+  "custom_last_modified_time_customer",
+  "custom_last_modified_time_agent",
   "is_urgent"
 ],
  "fields": [
@@ -480,25 +482,43 @@
 {
    "fieldname": "custom_last_modified_by_agent",
    "fieldtype": "Date",
-   "label": "Last Modified Date by Agent",
+   "label": "Last Modified Date(Agent)",
    "no_copy": 1,
    "oldfieldname": "custom_last_modified_by_agent",
    "oldfieldtype": "Date",
    "read_only": 1
   },
+  {
+   "fieldname": "last_modified_time_agent",
+   "fieldtype": "Time",
+   "label": "Last Modified Time(Agent)",
+   "no_copy": 1,
+   "oldfieldname": "custom_last_modified_time_agent",
+   "oldfieldtype": "Time",
+   "read_only": 1
+  },
 {
    "fieldname": "custom_last_modified_by_customer",
    "fieldtype": "Date",
-   "label": "Last Modified Date by Customer",
+   "label": "Last Modified Date(Customer)",
    "no_copy": 1,
    "oldfieldname": "custom_last_modified_by_customer",
    "oldfieldtype": "Date",
    "read_only": 1
   },
+  {
+   "fieldname": "last_modified_time_customer",
+   "fieldtype": "Time",
+   "label": "Last Modified Time(Customer)",
+   "no_copy": 1,
+   "oldfieldname": "custom_last_modified_time_customer",
+   "oldfieldtype": "Time",
+   "read_only": 1
+  },
 {
    "fieldname": "custom_total_time_taken",
    "fieldtype": "Data",
-   "label": "Total time taken",
+   "label": "Response TAT(Legal)",
    "no_copy": 1,
    "oldfieldname": "custom_total_time_taken",
    "oldfieldtype": "Data",
