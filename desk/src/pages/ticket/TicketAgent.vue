@@ -17,7 +17,7 @@
           v-if="ticket.data._customActions"
           :actions="ticket.data._customActions"
         />
-        <div v-if="isHelpdeskAdmin && ticket.data.assignees?.length">
+        <div v-if="ticket.data.assignees?.length">
           <component :is="ticket.data.assignees.length == 1 ? 'Button' : 'div'">
             <MultipleAvatar
               :avatars="ticket.data.assignees"
