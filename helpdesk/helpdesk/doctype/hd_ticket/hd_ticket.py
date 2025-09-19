@@ -879,16 +879,30 @@ class HDTicket(Document):
                 "width": "15rem",
             },
             {
-                "label": "Last Modified Date by Agent",
+                "label": "Last Modified Date(Agent)",
                 "type": "Date",
                 "key": "custom_last_modified_by_agent",
                 "width": "15rem",
             },
             
             {
-                "label": "Last Modified Date by Customer",
+                "label": "Last Modified Date(Customer)",
                 "type": "Date",
                 "key": "custom_last_modified_by_customer",
+                "width": "15rem",
+            },
+
+             {
+                "label": "Last Modified Time(Agent)",
+                "type": "Time",
+                "key": "custom_last_modified_time_agent",
+                "width": "15rem",
+            },
+            
+            {
+                "label": "Last Modified Time(Customer)",
+                "type": "Time",
+                "key": "custom_last_modified_time_customer",
                 "width": "15rem",
             },
             {
@@ -898,7 +912,7 @@ class HDTicket(Document):
                 "width": "15rem",
             },
             {
-                "label": "Total time taken",
+                "label": "Response TAT(Legal)",
                 "type": "Data",
                 "key": "custom_total_time_taken",
                 "width": "15rem",
@@ -1046,9 +1060,15 @@ class HDTicket(Document):
                 "width": "15rem",
             },
             {
-                "label": "Last Modified Date by Customer",
+                "label": "Last Modified Date(Customer)",
                 "type": "Date",
                 "key": "custom_last_modified_by_customer",
+                "width": "15rem",
+            },
+            {
+                "label": "Last Modified Time(Customer)",
+                "type": "Time",
+                "key": "custom_last_modified_time_customer",
                 "width": "15rem",
             },
             {
@@ -1115,6 +1135,8 @@ class HDTicket(Document):
             "custom_allocated_full_name",
             "custom_last_modified_by_customer",
             "custom_closing_date",
+            "custom_last_modified_time_customer",
+            "custom_last_modified_time_agent",
             # "ticket_type",
             # "contact",
             # "agreement_status",
