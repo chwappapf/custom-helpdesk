@@ -123,7 +123,7 @@
    "no_copy": 1,
    "oldfieldname": "ticket_status",
    "oldfieldtype": "Select",
-   "options": "Ticket Initiated\nQueries Raised which are pending with requester\nWork In Progress by Legal\nUnder Nivedita's Review\nDraft Shared\nResponse Received from Requester\nOn Hold\nResolved\nClosed",
+   "options": "Ticket Initiated\nRequestor to Respond\nWork In Progress by Legal\nUnder Manager's Review\nDraft Shared\nResponse Received from Requester\nOn Hold\nResolved\nClosed",
    "search_index": 1  
   },
   {
