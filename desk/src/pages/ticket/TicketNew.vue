@@ -43,7 +43,7 @@
           v-model="custom_cc"
           type="text"
           placeholder="Enter CC emails, comma separated"
-        />
+        ></FormControl>
       </div>
 
       <div
