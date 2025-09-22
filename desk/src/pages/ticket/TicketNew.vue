@@ -22,7 +22,7 @@
       <!-- custom fields -->
       <div
         class="grid grid-cols-1 gap-4 sm:grid-cols-3"
-        v-if="Boolean(visibleFields)"
+        v-if="Boolean(visibleFields?.length)"
       >
         <UniInput
           v-for="field in visibleFields"
@@ -35,17 +35,14 @@
         />
       </div>
       <!-- existing fields -->
-
-      <!-- CC Field -->
       <div class="mb-4">
         <label class="block text-sm font-medium text-gray-700">CC</label>
         <FormControl
           v-model="custom_cc"
           type="text"
           placeholder="Enter CC emails, comma separated"
-        ></FormControl>
-      </div>
-
+        />
+      </div>
       <div
         class="flex flex-col"
         :class="(subject.length >= 2 || description.length) && 'gap-5'"
@@ -80,7 +77,7 @@
             v-model:content="description"
             placeholder="Detailed explanation"
             expand
-            :uploadFunction="(file:any)=>uploadFunction(file)"
+            :uploadFunction="(file: any) => uploadFunction(file)"
           >
             <template #bottom-right>
               <Button
@@ -88,7 +85,7 @@
                 theme="gray"
                 variant="solid"
                 :disabled="
-                  $refs.editor.editor.isEmpty || ticket.loading || !subject
+                  editor?.editor?.isEmpty || ticket.loading || !subject
                 "
                 @click="() => ticket.submit()"
               />
@@ -96,7 +93,6 @@
           </TicketTextEditor>
         </div>
       </div>
-
       <!-- for agent portal -->
       <div v-if="!isCustomerPortal">
         <TicketTextEditor
@@ -112,7 +108,7 @@
               theme="gray"
               variant="solid"
               :disabled="
-                $refs.editor.editor.isEmpty || ticket.loading || !subject
+                editor?.editor?.isEmpty || ticket.loading || !subject
               "
               @click="() => ticket.submit()"
             />
@@ -152,6 +148,18 @@ import { useRoute, useRouter } from "vue-router";
 import SearchArticles from "../../components/SearchArticles.vue";
 import TicketTextEditor from "./TicketTextEditor.vue";
 
+// Define interface for field change event
+interface FieldChangeEvent {
+  value: any;
+}
+
+// Define interface for editor ref
+interface EditorRef {
+  editor: {
+    isEmpty: boolean;
+  };
+}
+
 interface P {
   templateId?: string;
 }
@@ -171,6 +179,8 @@ const subject = ref("");
 const description = ref("");
 const attachments = ref([]);
 const templateFields = reactive({});
+const oldFields = ref<Field[]>([]);
+const editor = ref<EditorRef | null>(null);
 
 const template = createResource({
   url: "helpdesk.helpdesk.doctype.hd_ticket_template.api.get_one",
@@ -180,7 +190,7 @@ const template = createResource({
   auto: true,
   onSuccess: (data) => {
     description.value = data.description_template || "";
-    oldFields = window.structuredClone(data.fields || []);
+    oldFields.value = window.structuredClone(data.fields || []);
     setupCustomizations(template, {
       doc: templateFields,
       call,
@@ -192,21 +202,21 @@ const template = createResource({
   },
 });
 
-function setupTemplateFields(fields) {
+function setupTemplateFields(fields: Field[]) {
   fields.forEach((field: Field) => {
     templateFields[field.fieldname] = "";
   });
 }
 
-let oldFields = [];
-
 function applyFilters(fieldname: string, filters: any = null) {
-  const f: Field = template.data.fields.find((f) => f.fieldname === fieldname);
+  const f: Field | undefined = template.data?.fields?.find(
+    (f) => f.fieldname === fieldname
+  );
   if (!f) return;
   if (f.fieldtype === "Select") {
-    handleSelectFieldUpdate(f, fieldname, filters, templateFields, oldFields);
+    handleSelectFieldUpdate(f, fieldname, filters, templateFields, oldFields.value);
   } else if (f.fieldtype === "Link") {
-    handleLinkFieldUpdate(f, fieldname, filters, templateFields, oldFields);
+    handleLinkFieldUpdate(f, fieldname, filters, templateFields, oldFields.value);
   }
 }
 
@@ -220,7 +230,7 @@ const visibleFields = computed(() => {
   return _fields.map((field) => parseField(field, templateFields));
 });
 
-function handleOnFieldChange(e: any, fieldname: string, fieldtype: string) {
+function handleOnFieldChange(e: FieldChangeEvent, fieldname: string, fieldtype: string) {
   templateFields[fieldname] = e.value;
   const fieldDependentFns = customOnChange.value?.[fieldname];
   if (fieldDependentFns) {
@@ -244,13 +254,21 @@ const ticket = createResource({
     attachments: attachments.value,
   }),
   validate: (params) => {
+    // Validate subject and description explicitly
+    if (isEmpty(params.doc.subject)) {
+      return "Subject is required";
+    }
+    if (isEmpty(params.doc.description)) {
+      return "Description is required";
+    }
+    // Validate custom fields
     const fields = visibleFields.value?.filter((f) => f.required) || [];
-    const toVerify = [...fields, "subject", "description"];
-    for (const field of toVerify) {
-      if (isEmpty(params.doc[field.fieldname || field])) {
-        return `${field.label || field} is required`;
+    for (const field of fields) {
+      if (isEmpty(params.doc[field.fieldname])) {
+        return `${field.label || field.fieldname} is required`;
       }
     }
+    return null; // No errors
   },
   onSuccess: (data) => {
     router.push({
@@ -264,7 +282,7 @@ const ticket = createResource({
         localStorage.setItem("firstTicket", data.name)
       );
     }
-    // only capture telemetry for customer portal
+    // Only capture telemetry for customer portal
     if (isCustomerPortal.value) {
       capture("new_ticket_submitted", {
         data: {
@@ -282,6 +300,10 @@ const ticket = createResource({
 function sanitize(html: string) {
   return sanitizeHtml(html, {
     allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+    allowedAttributes: {
+      ...sanitizeHtml.defaults.allowedAttributes,
+      img: ["src", "alt", "width", "height"], // Restrict img attributes
+    },
   });
 }
 
