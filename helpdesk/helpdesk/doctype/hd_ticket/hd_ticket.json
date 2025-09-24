@@ -66,15 +66,15 @@
   "feedback",
   "feedback_extra",
   "meta_tab",
-  "custom_last_modified_by_customer",
-  "custom_last_modified_by_agent",
+  "last_modified_by_requestor",
+  "last_modified_by_legal",
   "custom_total_time_taken",
   "tat_between_statuses",
-  "custom_closing_date",
-  "custom_closing_time",
+  "closing_date",
+  "closing_time",
   "custom_allocated_full_name",
-  "custom_last_modified_time_customer",
-  "custom_last_modified_time_agent",
+  "last_modified_time_requestor",
+  "last_modified_time_legal",
   "is_urgent"
 ],
  "fields": [
@@ -473,58 +473,40 @@
    "set_only_once": 1
   },
   {
-   "fieldname": "custom_closing_date",
+   "fieldname": "closing_date",
    "fieldtype": "Date",
    "label": "Ticket Closing Date",
-   "no_copy": 1,
-   "oldfieldname": "custom_closing_date",
-   "oldfieldtype": "Date",
-   "read_only": 1
+   "no_copy": 1
   },
   {
-   "fieldname": "custom_closing_time",
+   "fieldname": "closing_time",
    "fieldtype": "Time",
    "label": "Ticket Closing Time",
-   "no_copy": 1,
-   "oldfieldname": "custom_closing_time",
-   "oldfieldtype": "Time",
-   "read_only": 1
+   "no_copy": 1
   },
 {
-   "fieldname": "custom_last_modified_by_agent",
+   "fieldname": "last_modified_by_legal",
    "fieldtype": "Date",
-   "label": "Last Modified Date(Agent)",
-   "no_copy": 1,
-   "oldfieldname": "custom_last_modified_by_agent",
-   "oldfieldtype": "Date",
-   "read_only": 1
+   "label": "Last Modified Date(Legal)",
+   "no_copy": 1
   },
   {
-   "fieldname": "custom_last_modified_time_agent",
+   "fieldname": "last_modified_time_legal",
    "fieldtype": "Time",
-   "label": "Last Modified Time(Agent)",
-   "no_copy": 1,
-   "oldfieldname": "custom_last_modified_time_agent",
-   "oldfieldtype": "Time",
-   "read_only": 1
+   "label": "Last Modified Time(Legal)",
+   "no_copy": 1
   },
 {
-   "fieldname": "custom_last_modified_by_customer",
+   "fieldname": "last_modified_by_requestor",
    "fieldtype": "Date",
-   "label": "Last Modified Date(Customer)",
-   "no_copy": 1,
-   "oldfieldname": "custom_last_modified_by_customer",
-   "oldfieldtype": "Date",
-   "read_only": 1
+   "label": "Last Modified Date(Requestor)",
+   "no_copy": 1
   },
   {
-   "fieldname": "custom_last_modified_time_customer",
+   "fieldname": "last_modified_time_requestor",
    "fieldtype": "Time",
-   "label": "Last Modified Time(Customer)",
-   "no_copy": 1,
-   "oldfieldname": "custom_last_modified_time_customer",
-   "oldfieldtype": "Time",
-   "read_only": 1
+   "label": "Last Modified Time(Requestor)",
+   "no_copy": 1
   },
 {
    "fieldname": "custom_total_time_taken",

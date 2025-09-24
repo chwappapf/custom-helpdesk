@@ -262,13 +262,14 @@ class HDTicket(Document):
         )
 
     def check_update_perms(self):
-        if self.is_new() or is_agent():
+        if self.is_new():
+        # or is_agent()
             return
         old_doc = self.get_doc_before_save()
         is_closed = old_doc.status == "Closed"
         is_rated = bool(old_doc.feedback)
         if is_closed or is_rated:
-            text = _("Closed or rated tickets cannot be updated by non-agents")
+            text = _("Ticket closed, further communication is disabled")
             frappe.throw(text, frappe.PermissionError)
 
     def handle_ticket_activity_update(self):
@@ -887,40 +888,40 @@ class HDTicket(Document):
                 "width": "15rem",
             },
             {
-                "label": "Last Modified Date(Agent)",
+                "label": "Last Modified Date(Legal)",
                 "type": "Date",
-                "key": "custom_last_modified_by_agent",
+                "key": "last_modified_by_legal",
                 "width": "15rem",
             },
             
             {
-                "label": "Last Modified Time(Agent)",
+                "label": "Last Modified Time(Legal)",
                 "type": "Time",
-                "key": "custom_last_modified_time_agent",
+                "key": "last_modified_time_legal",
                 "width": "15rem",
             },
              {
-                "label": "Last Modified Date(Customer)",
+                "label": "Last Modified Date(Requestor)",
                 "type": "Date",
-                "key": "custom_last_modified_by_customer",
+                "key": "last_modified_by_requestor",
                 "width": "15rem",
             },
             {
-                "label": "Last Modified Time(Customer)",
+                "label": "Last Modified Time(Requestor)",
                 "type": "Time",
-                "key": "custom_last_modified_time_customer",
+                "key": "last_modified_time_requestor",
                 "width": "15rem",
             },
             {
                 "label": "Ticket Closing Date",
                 "type": "Date",
-                "key": "custom_closing_date",
+                "key": "closing_date",
                 "width": "15rem",
             },
             {
                 "label": "Ticket Closing Time",
                 "type": "Time",
-                "key": "custom_closing_time",
+                "key": "closing_time",
                 "width": "15rem",
             },
             {
@@ -1084,27 +1085,27 @@ class HDTicket(Document):
                 "width": "15rem",
             },
             {
-                "label": "Last Modified Date(Customer)",
+                "label": "Last Modified Date(Requestor)",
                 "type": "Date",
-                "key": "custom_last_modified_by_customer",
+                "key": "last_modified_by_requestor",
                 "width": "15rem",
             },
             {
-                "label": "Last Modified Time(Customer)",
+                "label": "Last Modified Time(Requestor)",
                 "type": "Time",
-                "key": "custom_last_modified_time_customer",
+                "key": "last_modified_time_requestor",
                 "width": "15rem",
             },
             {
                 "label": "Ticket Closing Date",
                 "type": "Date",
-                "key": "custom_closing_date",
+                "key": "closing_date",
                 "width": "15rem",
             },
             {
                 "label": "Ticket Closing Time",
                 "type": "Time",
-                "key": "custom_closing_time",
+                "key": "closing_time",
                 "width": "15rem",
             },
             {
@@ -1164,11 +1165,12 @@ class HDTicket(Document):
             "opening_date",
             "opening_time",
             "custom_allocated_full_name",
-            "custom_last_modified_by_customer",
-            "custom_closing_date",
-            "custom_closing_time",
-            "custom_last_modified_time_customer",
-            "custom_last_modified_time_agent",
+            "last_modified_by_requestor",
+            "last_modified_by_legal",
+            "closing_date",
+            "closing_time",
+            "last_modified_time_requestor",
+            "last_modified_time_legal",
             # "ticket_type",
             # "contact",
             # "agreement_status",
