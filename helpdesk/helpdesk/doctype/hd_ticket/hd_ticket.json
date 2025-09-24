@@ -69,7 +69,9 @@
   "custom_last_modified_by_customer",
   "custom_last_modified_by_agent",
   "custom_total_time_taken",
+  "tat_between_statuses",
   "custom_closing_date",
+  "custom_closing_time",
   "custom_allocated_full_name",
   "custom_last_modified_time_customer",
   "custom_last_modified_time_agent",
@@ -290,7 +292,7 @@
    "default": "Today",
    "fieldname": "opening_date",
    "fieldtype": "Date",
-   "label": "Opening Date",
+   "label": "Ticket Opening Date",
    "no_copy": 1,
    "oldfieldname": "opening_date",
    "oldfieldtype": "Date",
@@ -308,7 +310,7 @@
    "default": "Now",
    "fieldname": "opening_time",
    "fieldtype": "Time",
-   "label": "Opening Time",
+   "label": "Ticket Opening Time",
    "no_copy": 1,
    "oldfieldname": "opening_time",
    "oldfieldtype": "Time",
@@ -479,6 +481,15 @@
    "oldfieldtype": "Date",
    "read_only": 1
   },
+  {
+   "fieldname": "custom_closing_time",
+   "fieldtype": "Time",
+   "label": "Ticket Closing Time",
+   "no_copy": 1,
+   "oldfieldname": "custom_closing_time",
+   "oldfieldtype": "Time",
+   "read_only": 1
+  },
 {
    "fieldname": "custom_last_modified_by_agent",
    "fieldtype": "Date",
@@ -489,7 +500,7 @@
    "read_only": 1
   },
   {
-   "fieldname": "last_modified_time_agent",
+   "fieldname": "custom_last_modified_time_agent",
    "fieldtype": "Time",
    "label": "Last Modified Time(Agent)",
    "no_copy": 1,
@@ -507,7 +518,7 @@
    "read_only": 1
   },
   {
-   "fieldname": "last_modified_time_customer",
+   "fieldname": "custom_last_modified_time_customer",
    "fieldtype": "Time",
    "label": "Last Modified Time(Customer)",
    "no_copy": 1,
@@ -521,6 +532,15 @@
    "label": "Response TAT(Legal)",
    "no_copy": 1,
    "oldfieldname": "custom_total_time_taken",
+   "oldfieldtype": "Data",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tat_between_statuses",
+   "fieldtype": "Data",
+   "label": "TAT Between Statuses(Legal)",
+   "no_copy": 1,
+   "oldfieldname": "tat_between_statuses",
    "oldfieldtype": "Data",
    "read_only": 1
   }

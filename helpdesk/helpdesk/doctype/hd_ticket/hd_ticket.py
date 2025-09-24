@@ -277,14 +277,16 @@ class HDTicket(Document):
         Should be called inside on_update
         """
         field_maps = {
-            "status": "status",
+            # "status": "status",
+            "ticket_status": "ticket status",
             "priority": "priority",
             "agent_group": "team",
             "ticket_type": "type",
             "contact": "contact",
         }
         for field in [
-            "status",
+            # "status",
+            "ticket_status",
             "priority",
             "agent_group",
             "contact",
@@ -873,9 +875,15 @@ class HDTicket(Document):
                 "width": "4rem",
             },
               {
-                "label": "Opening Date",
+                "label": "Ticket Opening Date",
                 "type": "Date",
                 "key": "opening_date",
+                "width": "15rem",
+            },
+            {
+                "label": "Ticket Opening Time",
+                "type": "Time",
+                "key": "opening_time",
                 "width": "15rem",
             },
             {
@@ -886,19 +894,17 @@ class HDTicket(Document):
             },
             
             {
-                "label": "Last Modified Date(Customer)",
-                "type": "Date",
-                "key": "custom_last_modified_by_customer",
-                "width": "15rem",
-            },
-
-             {
                 "label": "Last Modified Time(Agent)",
                 "type": "Time",
                 "key": "custom_last_modified_time_agent",
                 "width": "15rem",
             },
-            
+             {
+                "label": "Last Modified Date(Customer)",
+                "type": "Date",
+                "key": "custom_last_modified_by_customer",
+                "width": "15rem",
+            },
             {
                 "label": "Last Modified Time(Customer)",
                 "type": "Time",
@@ -906,15 +912,27 @@ class HDTicket(Document):
                 "width": "15rem",
             },
             {
-                "label": "Closing Date",
+                "label": "Ticket Closing Date",
                 "type": "Date",
                 "key": "custom_closing_date",
+                "width": "15rem",
+            },
+            {
+                "label": "Ticket Closing Time",
+                "type": "Time",
+                "key": "custom_closing_time",
                 "width": "15rem",
             },
             {
                 "label": "Response TAT(Legal)",
                 "type": "Data",
                 "key": "custom_total_time_taken",
+                "width": "15rem",
+            },
+            {
+                "label": "TAT Between Statuses(Legal)",
+                "type": "Data",
+                "key": "tat_between_statuses",
                 "width": "15rem",
             },
             {
@@ -1054,9 +1072,15 @@ class HDTicket(Document):
                 "width": "4rem",
             },
               {
-                "label": "Opening Date",
+                "label": "Ticket Opening Date",
                 "type": "Date",
                 "key": "opening_date",
+                "width": "15rem",
+            },
+            {
+                "label": "Ticket Opening Time",
+                "type": "Time",
+                "key": "opening_time",
                 "width": "15rem",
             },
             {
@@ -1072,9 +1096,15 @@ class HDTicket(Document):
                 "width": "15rem",
             },
             {
-                "label": "Closing Date",
+                "label": "Ticket Closing Date",
                 "type": "Date",
                 "key": "custom_closing_date",
+                "width": "15rem",
+            },
+            {
+                "label": "Ticket Closing Time",
+                "type": "Time",
+                "key": "custom_closing_time",
                 "width": "15rem",
             },
             {
@@ -1132,9 +1162,11 @@ class HDTicket(Document):
             # "agent_group",
             "is_urgent",
             "opening_date",
+            "opening_time",
             "custom_allocated_full_name",
             "custom_last_modified_by_customer",
             "custom_closing_date",
+            "custom_closing_time",
             "custom_last_modified_time_customer",
             "custom_last_modified_time_agent",
             # "ticket_type",
