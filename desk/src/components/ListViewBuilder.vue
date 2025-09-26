@@ -465,6 +465,20 @@ function listCell(column: any, row: any, item: any, idx: number) {
       textContent: formatTimeShort(item),
     });
   }
+
+  if (column.type === "Time") {
+    // if time has sub-seconds (e.g. 12:30:45.123456), remove them
+    let formattedTime = item;
+    if (item?.includes(".")) {
+      formattedTime = item.split(".")[0];
+    }
+
+    return h("span", {
+      textContent: formattedTime,
+    });
+  }
+
+
   if (column.type === "MultipleAvatar") {
     return h(MultipleAvatar, {
       avatars: item,
