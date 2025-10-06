@@ -813,7 +813,7 @@ class HDTicket(Document):
         # be reopened.
         if c.sent_or_received == "Received":
             self.status = "Open"
-            self.status = "Response Received from Requestor"
+            self.ticket_status = "Response Received from Requestor"
         # If communication is outgoing, it must be a reply from agent
         if c.sent_or_received == "Sent":
             # Set first response date if not set already
