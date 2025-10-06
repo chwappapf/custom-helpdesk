@@ -813,6 +813,7 @@ class HDTicket(Document):
         # be reopened.
         if c.sent_or_received == "Received":
             self.status = "Open"
+            self.status = "Response received from Requestor"
         # If communication is outgoing, it must be a reply from agent
         if c.sent_or_received == "Sent":
             # Set first response date if not set already
@@ -820,8 +821,8 @@ class HDTicket(Document):
                 self.first_responded_on or frappe.utils.now_datetime()
             )
 
-            if frappe.db.get_single_value("HD Settings", "auto_update_status"):
-                self.status = "Replied"
+            # if frappe.db.get_single_value("HD Settings", "auto_update_status"):
+               
 
         # Fetch description from communication if not set already. This might not be needed
         # anymore as a communication is created when a ticket is created.
@@ -974,7 +975,7 @@ class HDTicket(Document):
             #     "width": "8rem",
             # },
             {
-                "label": "Customer",
+                "label": "Requestor",
                 "type": "Link",
                 "key": "customer",
                 "options": "HD Customer",
@@ -994,13 +995,13 @@ class HDTicket(Document):
             #     "key": "ticket_type",
             #     "width": "11rem",
             # },
-            {
-                "label": "Team",
-                "type": "Link",
-                "options": "HD Team",
-                "key": "agent_group",
-                "width": "10rem",
-            },
+            # {
+            #     "label": "Team",
+            #     "type": "Link",
+            #     "options": "HD Team",
+            #     "key": "agent_group",
+            #     "width": "10rem",
+            # },
             # {
             #     "label": "Contact",
             #     "type": "Link",
@@ -1140,7 +1141,7 @@ class HDTicket(Document):
             #     "width": "8rem",
             # },
             {
-                "label": "Team",
+                "label": "Legal",
                 "type": "Link",
                 "options": "HD Team",
                 "key": "agent_group",

@@ -75,7 +75,8 @@
   "custom_allocated_full_name",
   "last_modified_time_requestor",
   "last_modified_time_legal",
-  "is_urgent"
+  "is_urgent",
+  "custom_cc"
 ],
  "fields": [
   {
@@ -125,7 +126,7 @@
    "no_copy": 1,
    "oldfieldname": "ticket_status",
    "oldfieldtype": "Select",
-   "options": "Ticket Initiated\nRequestor to Respond\nWork In Progress by Legal\nUnder Manager's Review\nDraft Shared\nResponse Received from Requester\nOn Hold\nResolved\nClosed",
+   "options": "Ticket Initiated\nRequestor to Respond\nWork In Progress by Legal\nUnder Manager's Review\nDraft Shared\nResponse Received from Requestor\nOn Hold\nResolved\nClosed",
    "search_index": 1  
   },
   {
@@ -148,8 +149,15 @@
   {
    "fieldname": "agent_group",
    "fieldtype": "Link",
-   "label": "Team",
+   "label": "Legal",
    "options": "HD Team"
+  },
+  {
+   "fieldname": "custom_cc",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "CC",
+   "options": "User"
   },
   {
    "fieldname": "ticket_split_from",
@@ -355,7 +363,7 @@
    "fieldname": "customer",
    "fieldtype": "Link",
    "in_standard_filter": 1,
-   "label": "Customer",
+   "label": "Requestor",
    "options": "HD Customer"
   },
   {

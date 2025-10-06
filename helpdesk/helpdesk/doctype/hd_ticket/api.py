@@ -21,9 +21,9 @@ def new(doc, attachments=[]):
     doc["attachments"] = attachments
     d = frappe.get_doc(doc).insert()
     # Send to CC if provided
-    cc_email = doc.get('custom_cc')
-    if cc_email:
-        send_cc_email(d, cc_email)
+    # cc_email = doc.get('custom_cc')
+    # if cc_email:
+    #     send_cc_email(d, cc_email)
     return d
 
 def send_cc_email(ticket, cc_email):
