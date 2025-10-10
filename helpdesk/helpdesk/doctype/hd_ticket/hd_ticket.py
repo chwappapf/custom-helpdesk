@@ -811,9 +811,16 @@ class HDTicket(Document):
     def on_communication_update(self, c):
         # If communication is incoming, then it is a reply from customer, and ticket must
         # be reopened.
+        # if c.sent_or_received == "Received":
+        #     self.status = "Open"
+        #     self.ticket_status = "Response Received from Requestor"
+
         if c.sent_or_received == "Received":
             self.status = "Open"
-            self.ticket_status = "Response Received from Requestor"
+            if self.ticket_status != "Ticket Initiated":
+            # frappe.errprint("My Test message")
+                self.ticket_status = "Response Received from Requester"
+                
         # If communication is outgoing, it must be a reply from agent
         if c.sent_or_received == "Sent":
             # Set first response date if not set already
